@@ -124,6 +124,9 @@ div.id = 'player'
 tag.src = 'http://www.youtube.com/player_api'
 search.placeholder = 'Find your tune'
 search.onkeydown = search_videos
+search.value = "Original Music Video"
+search_videos()
+search.value = ""
 get_title()
 firstScriptTag.parentNode.insertBefore(tag,firstScriptTag)
 </script>
