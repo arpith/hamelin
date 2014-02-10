@@ -8,6 +8,7 @@ input:-moz-placeholder {color:inherit;}
 input:focus,select:focus,textarea:focus,button:focus {outline: none;}
 h1, h1 a {margin:0; padding:0;}
 #player {width:100%; height:auto;}
+li {list-style:none; display:block; width:320px; height:auto; -webkit-filter:blur(5px); -moz-filter:blur(5px); -o-filter:blur(5px); -ms-filter:blur(5px); filter:blur(5px);}
 </style>
 <title>Hamelin</title>
 <body>
@@ -17,7 +18,7 @@ h1, h1 a {margin:0; padding:0;}
 var id = window.location.pathname.slice(1)
 , playlist = document.body.appendChild(document.createElement('div'))
 , search = document.body.appendChild(document.createElement('input'))
-, results = document.body.appendChild(document.createElement('div'))
+, results = document.body.appendChild(document.createElement('ol'))
 , onYouTubePlayerAPIReady = function(){
   if(!id) return
   var div = playlist.appendChild(document.createElement('div'))
@@ -51,15 +52,18 @@ var id = window.location.pathname.slice(1)
     if(event.data==0) play_next()
   }
 }
-, add_result = function(i,t){
+, add_result = function(i,t,u){
   if(i==id) return
-  result = document.getElementById(i)
+  var result = document.getElementById(i)
   if (!result) {
-    result = results.appendChild(document.createElement('a'))
-    result.href = i
-    result.innerHTML = t
+    var a = document.createElement('a')
+    result = results.appendChild(document.createElement('ol'))
+    result.appendChild(a)
+    result.style.backgroundImage = 'url('+u+')'
     result.id = i
     result.className = "1"
+    a.href = i
+    a.innerHTML = t
     if (results.childNodes.length > 10) result.style.display = 'none'
     else result.style.display = 'block'
   }
@@ -80,7 +84,7 @@ var id = window.location.pathname.slice(1)
   xhr.open('GET','https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&max-results=50&q='+search.value)
   xhr.onload = function(){
     if ((items = JSON.parse(this.responseText).data.items)) {
-      items.forEach(function(i){add_result(i.id,i.title)})
+      items.forEach(function(i){add_result(i.id,i.title,i.thumbnail.hqDefault)})
     }
   }
   xhr.send()
