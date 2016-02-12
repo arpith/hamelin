@@ -8,5 +8,6 @@ What happens at hamel.in
 
 ## Deploy
 Alternatively, you can deploy on Heroku using this button:
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
