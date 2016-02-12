@@ -1,7 +1,7 @@
 {
   "name": "hamelin",
   "version": "1.0.0",
-  "description": "hamelin =======",
+  "description": "What happens at hamel.in",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
