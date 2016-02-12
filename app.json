@@ -1,0 +1,6 @@
+{
+  "name": "Hamelin",
+  "description": "What happens at hamel.in",
+  "repository": "https://github.com/arpith/hamelin",
+  "keywords": ["node", "express", "static"]
+}

@@ -1,0 +1,136 @@
+<!doctype html>
+<style>
+body {font:3em Helvetica,sans; margin:auto; max-width:1024px; padding-bottom:1em;}
+input {font:inherit; margin-bottom:0.25em; padding:0.5em; -webkit-appearance:none; border:none; border-bottom:thick solid black; float:left; clear:left; width:12em; border-radius:0;}
+a,a:visited {float:left; clear:left; padding:0.25em; margin-left:0.25em; text-decoration:none; color:inherit;}
+input::-webkit-input-placeholder {color:inherit;}
+input:-moz-placeholder {color:inherit;}
+input:focus,select:focus,textarea:focus,button:focus {outline: none;}
+h1, h1 a {margin:0; padding:0;}
+#player {width:100%; height:auto;}
+li {list-style:none; display:block; width:320px; height:auto; -webkit-filter:blur(5px); -moz-filter:blur(5px); -o-filter:blur(5px); -ms-filter:blur(5px); filter:blur(5px);}
+</style>
+<title>Hamelin</title>
+<body>
+<h1><a href=/>Hamelin</a></h1>
+</body>
+<script>
+var id = window.location.pathname.slice(1)
+, playlist = document.body.appendChild(document.createElement('div'))
+, search = document.body.appendChild(document.createElement('input'))
+, results = document.body.appendChild(document.createElement('ol'))
+, onYouTubePlayerAPIReady = function(){
+  if(!id) return
+  var div = playlist.appendChild(document.createElement('div'))
+  div.id = "player"
+  div.style.height = 9 * document.documentElement.clientWidth / 16 + "px"
+  var p = new YT.Player('player',{
+    videoId:id
+    , playerVars:{
+      'autoplay':1
+      , 'enablejsapi':1
+      , 'modestbranding':1
+      , 'showinfo':0
+      , 'controls':0
+      , 'origin':'http://www.hamel.in'
+    }
+    , events:{
+      'onStateChange':update_state
+      , 'onError':play_next
+    }
+  })
+  p.playVideo()
+}
+, play_next = function(){
+  if(!results.firstChild) search_playlists()
+  document.location.href = results.firstChild.href
+}
+, update_state = function(event){
+  if(event.data==1) search.style.color = 'black'
+  else {
+    search.style.color = 'grey'
+    if(event.data==0) play_next()
+  }
+}
+, add_result = function(i,t,u){
+  if(i==id) return
+  var result = document.getElementById(i)
+  if (!result) {
+    var a = document.createElement('a')
+    result = results.appendChild(document.createElement('ol'))
+    result.appendChild(a)
+    result.style.backgroundImage = 'url('+u+')'
+    result.id = i
+    result.className = "1"
+    a.href = i
+    a.innerHTML = t
+    if (results.childNodes.length > 10) result.style.display = 'none'
+    else result.style.display = 'block'
+  }
+  var first_same_score = document.getElementsByClassName(result.className)[0]
+  result.className = parseInt(result.className,10) + 1
+  if (first_same_score==result) return
+  result.style.display = first_same_score.style.display
+  if (first_same_score.nextSibling.style.display=='none') console.log(first_same_score.innerHTML)
+  first_same_score.style.display = first_same_score.nextSibling.style.display
+  result = results.insertBefore(results.removeChild(result),first_same_score)
+}
+, search_videos = function(){
+  if (!search.value) Array.prototype.forEach.call(results.childNodes,function(r){
+    console.log('removing'+r.innerHTML)
+    results.removeChild(r)
+  })
+  var xhr = new XMLHttpRequest()
+  xhr.open('GET','https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&max-results=50&q='+search.value)
+  xhr.onload = function(){
+    if ((items = JSON.parse(this.responseText).data.items)) {
+      items.forEach(function(i){add_result(i.id,i.title,i.thumbnail.hqDefault)})
+    }
+  }
+  xhr.send()
+}
+, search_playlists = function(){
+  var xhr = new XMLHttpRequest()
+  xhr.open('GET','https://gdata.youtube.com/feeds/api/playlists/snippets?v=2&alt=jsonc&max-results=50&q='+search.value)
+  xhr.onload = function(){
+    if ((items = JSON.parse(this.responseText).data.items)) {
+      items.forEach(function(item){
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET','https://gdata.youtube.com/feeds/api/playlists/'+item.id+'?v=2&alt=jsonc')
+        xhr.onload = function(){
+          if ((data = JSON.parse(this.responseText).data)) data.items.forEach(function(i){add_result(i.video.id,i.video.title)})
+        }
+        xhr.send()
+      })
+    }
+  }
+  xhr.send()
+}  
+, get_title = function(){
+  if (!id) return
+  var xhr = new XMLHttpRequest()
+  xhr.open('GET','https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&max-results=1&q='+id)
+  xhr.onload = function(){
+    if ((items = JSON.parse(this.responseText).data.items)) {
+      search.style.color = 'grey'
+      search.value = items[0].title
+      document.title = items[0].title
+      search_playlists()
+    }
+    else search.value = 'Something went wrong'
+  }
+  xhr.send()
+}
+, tag = document.createElement('script')
+, firstScriptTag = document.getElementsByTagName('script')[0]
+, div = document.body.appendChild(document.createElement('div'))
+div.id = 'player'
+tag.src = 'http://www.youtube.com/player_api'
+search.placeholder = 'Find your tune'
+search.onkeydown = search_videos
+search.value = "Original Music Video"
+search_videos()
+search.value = ""
+get_title()
+firstScriptTag.parentNode.insertBefore(tag,firstScriptTag)
+</script>
