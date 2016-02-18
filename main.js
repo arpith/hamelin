@@ -81,9 +81,9 @@ function searchVideos() {
   xhr.open('GET', 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=videos&key=' + apiKey + '&q=' + search.value);
 //  xhr.open('GET', 'https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&max-results=50&q=' + search.value);
   xhr.onload = function() {
-    if ((items = JSON.parse(this.responseText).data.items)) {
+    if ((items = JSON.parse(this.responseText).items)) {
       items.forEach(function(i) {
-        addResult(i.id, i.title, i.thumbnail.hqDefault);
+        addResult(i.id.videoid, i.snippet.title, i.snippet.thumbnail.high.url);
       });
     }
   };
