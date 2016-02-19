@@ -83,7 +83,7 @@ function searchVideos() {
   xhr.onload = function() {
     if ((items = JSON.parse(this.responseText).items)) {
       items.forEach(function(i) {
-        addResult(i.id.videoid, i.snippet.title, i.snippet.thumbnail.high.url);
+        addResult(i.id.videoid, i.snippet.title, i.snippet.thumbnails.high.url);
       });
     }
   };
