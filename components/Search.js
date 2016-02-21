@@ -6,14 +6,14 @@ class Search extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      value: SearchStore.getValue()
+      query: SearchStore.getQuery()
     };
     this.handleChange = this.handleChange.bind(this);
     this.updateState = this.updateState.bind(this);
   }
 
   updateState() {
-    this.setState({value: SearchStore.getValue()});
+    this.setState({query: SearchStore.getQuery()});
   }
 
   handleChange(event) {
@@ -30,11 +30,10 @@ class Search extends React.Component {
 
   render() {
     return (
-      <input
-        type="text"
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
+      <form>
+        <input type="text" value={this.state.query} />
+        <input type="submit" value="Search" />
+      </form>
     );
   }
 }
