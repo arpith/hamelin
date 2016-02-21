@@ -6,32 +6,30 @@ class Search extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      query: SearchStore.getQuery()
+      query: 'Official Video'
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.search = this.search.bind(this);
     this.updateState = this.updateState.bind(this);
+    this.search();
   }
 
-  updateState() {
-    this.setState({query: SearchStore.getQuery()});
+  updateState(e) {
+    this.setState({query: e.target.value});
   }
 
-  handleChange(event) {
-    SearchActions.update(event.target.value);
-  }
-
-  componentDidMount() {
-    SearchStore.addChangeListener(this.updateState);
-  }
-
-  componentWillUnmount() {
-    SearchStore.removeChangeListener(this.updateState);
+  search(e) {
+    if (e) e.preventDefault();
+    SearchActions.search(this.state.query);
   }
 
   render() {
     return (
-      <form>
-        <input type="text" value={this.state.query} />
+      <form onSubmit={this.search}>
+        <input
+          type="text"
+          value={this.state.query}
+          onChange={this.updateState}
+        />
         <input type="submit" value="Search" />
       </form>
     );
