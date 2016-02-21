@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultStore from '../stores/ResultStore';
+import SearchStore from '../stores/SearchStore';
 
 import Result from './Result';
  
@@ -7,13 +7,13 @@ class ResultList extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      results: ResultStore.getResults()
+      results: SearchStore.getResults()
     };
     this.onChange = this.onChange.bind(this);
   }
 
   onChange() {
-    this.setState({results: ResultStore.getResults()});
+    this.setState({results: SearchStore.getResults()});
   }
 
   componentDidMount() {
