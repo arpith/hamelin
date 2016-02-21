@@ -5,17 +5,52 @@ import assign from 'object-assign';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
 const CHANGE_EVENT = 'change';
+const API_KEY = 'AIzaSyCk47VXnNZ5BcR1_kO84-BS7My2j0G5PAc';
 
-let _value = '';
+let _query = '';
+let _results = [];
 
-function updateValue(value) {
-  _value = value;
+function searchVideos(query) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=videos&key=' + API_KEY + '&q=' + _query);
+  xhr.onload = () => {
+    let response = {};
+
+    try {
+      response = JSON.parse(this.responseText);
+    } catch (e) {
+      response = null;
+    }
+
+    if (response && response.items) {
+      _results = response.items.map((result) => {
+        return {
+          id: result.id.videoId,
+          title: result.snippet.title,
+          thumbnail: result.snippet.thumbnails.high.url
+        };
+      });
+    }
+
+    SearchStore.emitChange();
+  };
+
+  xhr.send();
+}
+
+function search(query) {
+  _query = query;
   SearchStore.emitChange();
+  searchVideos(query);
 }
 
 const SearchStore = assign({}, EventEmitter.prototype, {
-  getValue: function() {
-    return _value;
+  getQuery: function() {
+    return _query;
+  },
+
+  getResults: function() {
+    return _results;
   },
 
   emitChange: function() {
@@ -33,12 +68,10 @@ const SearchStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
   switch (action.actionType) {
-    case 'update-search-value':
-      updateValue(action.value);
+    case 'search':
+      search(action.query);
       break;
-
   }
 });
 
 export default SearchStore;
-
