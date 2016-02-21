@@ -17,11 +17,11 @@ class ResultList extends React.Component {
   }
 
   componentDidMount() {
-    ResultStore.addChangeListener(this.onChange);
+    SearchStore.addChangeListener(this.onChange);
   }
 
   componentWillUnmount() {
-    ResultStore.removeChangeListener(this.onChange);
+    SearchStore.removeChangeListener(this.onChange);
   }
 
   render() {

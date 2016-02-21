@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchStore from '../stores/SearchStore';
-import SearchActions from '../stores/SearchActions';
+import SearchActions from '../actions/SearchActions';
  
 class Search extends React.Component {
   constructor(props, context) {
@@ -17,8 +17,7 @@ class Search extends React.Component {
     this.setState({query: e.target.value});
   }
 
-  search(e) {
-    if (e) e.preventDefault();
+  search() {
     SearchActions.search(this.state.query);
   }
 
