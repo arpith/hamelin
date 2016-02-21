@@ -1,0 +1,50 @@
+body {
+  font: 3em Helvetica, sans;
+  margin: auto;
+  max-width: 1024px;
+  padding-bottom: 1em;
+}
+input {
+  font: inherit;
+  margin-bottom: 0.25em;
+  padding: 0.5em;
+  -webkit-appearance: none;
+  border: none;
+  border-bottom: thick solid black;
+  float: left;
+  clear: left;
+  width: 12em;
+  border-radius: 0;
+}
+a, a:visited {
+  float: left;
+  clear: left;
+  padding: 0.25em;
+  margin-left: 0.25em;
+  text-decoration: none;
+  color: inherit;
+}
+input::-webkit-input-placeholder {color:inherit;}
+input:-moz-placeholder {color:inherit;}
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
+}
+h1, h1 a {
+  margin: 0;
+  padding: 0;
+}
+#player {
+  width: 100%;
+  height: auto;
+}
+li {
+  list-style: none;
+  display: block;
+  width: 320px;
+  height: auto;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
