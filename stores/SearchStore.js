@@ -52,7 +52,7 @@ function searchVideos(query) {
     _resultIDs = results.map(res => res.id);
     _results = {};
     results.forEach((res) => {
-      _result[res.id] = res;
+      _results[res.id] = res;
     });
     SearchStore.emitChange();
   });
