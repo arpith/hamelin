@@ -15,6 +15,10 @@ class Search extends React.Component {
   }
 
   render() {
+    const buttonStyle = {
+      background: 'black',
+      color: 'white'
+    };
     return (
       <form onSubmit={this.searchVideos}>
         <input
@@ -22,7 +26,7 @@ class Search extends React.Component {
           value={this.state.query}
           onChange={this.updateState}
         />
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search" style={buttonStyle} />
       </form>
     );
   }
