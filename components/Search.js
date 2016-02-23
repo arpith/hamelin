@@ -8,22 +8,15 @@ class Search extends React.Component {
     this.state = {
       query: 'Official Video'
     };
-    this.search = this.search.bind(this);
-    this.updateState = this.updateState.bind(this);
-    this.search();
-  }
-
-  updateState(e) {
-    this.setState({query: e.target.value});
-  }
-
-  search() {
-    SearchActions.search(this.state.query);
+    this.searchVideos = () => SearchActions.searchVideos(this.state.query);
+    this.searchPlaylists = () => SearchActions.searchPlaylists(this.state.query);
+    this.updateState = (e) => this.setState({query: e.target.value});
+    this.searchVideos();
   }
 
   render() {
     return (
-      <form onSubmit={this.search}>
+      <form onSubmit={this.searchVideos}>
         <input
           type="text"
           value={this.state.query}

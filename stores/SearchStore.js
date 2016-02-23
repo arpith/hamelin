@@ -32,14 +32,14 @@ function addResult(result) {
 function API(query, type) {
   const baseURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50';
   const url = baseURL + '&key=' + API_KEY + '&q=' + query + '&type=' + type;
-  return fetch(url).then(res => res.json).then((res) => {
+  return fetch(url).then(res => res.json()).then((res) => {
     return res.items.map(parseResult);
   });
 }
 
 function searchPlaylists(query) {
   _query = query;
-  return API(query, 'playlists').then((results) => {
+  API(query, 'playlists').then((results) => {
     results.forEach(addResult);
     _resultIDs.sort((a, b) => a.score - b.score);
     SearchStore.emitChange();
@@ -48,7 +48,7 @@ function searchPlaylists(query) {
 
 function searchVideos(query) {
   _query = query;
-  return API(query, 'videos').then((results) => {
+  API(query, 'videos').then((results) => {
     _resultIDs = results.map(res => res.id);
     _results = {};
     results.forEach((res) => {

@@ -3,10 +3,10 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 const SearchActions = {
   searchVideos: function(query) {
     AppDispatcher.dispatch({
-      actionType: 'update-search-value',
+      actionType: 'search-videos',
       query: query
     });
-  }
+  },
 
   searchPlaylists: function(query) {
     AppDispatcher.dispatch({
