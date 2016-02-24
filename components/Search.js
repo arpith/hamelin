@@ -32,6 +32,7 @@ class Search extends React.Component {
           type="text"
           value={this.state.query}
           onChange={this.updateState}
+          style={fieldStyle}
         />
         <input type="submit" value="Search" style={buttonStyle} />
       </form>
