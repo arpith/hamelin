@@ -3,8 +3,16 @@ import { Link } from 'react-router';
 
 class Result extends React.Component {
   render() {
+    let style = {
+      backgroundImage: 'url(' + this.props.result.thumbnail + ')',
+      listStyle: 'none',
+      display: 'block',
+      width: '320px',
+      height: 'auto',
+      filter: 'blur(5px)'
+    };
     return (
-      <li><Link to={'/' + this.props.result.id}>{this.props.result.title}</Link></li>
+      <li style={style}><Link to={'/' + this.props.result.id}>{this.props.result.title}</Link></li>
     );
   }
 }
