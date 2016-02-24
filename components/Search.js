@@ -16,8 +16,15 @@ class Search extends React.Component {
 
   render() {
     const buttonStyle = {
-      background: 'black',
+      background: '#157DEC',
       color: 'white'
+    };
+    const fieldStyle = {
+      font: 'inherit',
+      WebkitAppearance: 'none',
+      border: 'thin solid',
+      borderColor: '#4A525A',
+      borderRadius: '5',
     };
     return (
       <form onSubmit={this.searchVideos}>

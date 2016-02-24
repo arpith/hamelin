@@ -41,12 +41,4 @@ a {
   border-bottom: thin solid;
   border-bottom-color: #157DEC;
 }
-input {
-  -webkit-appearance: none;
-  border: thin solid;
-  border-color: #4A525A;
-  border-radius: 5;
-}
-input:focus, select:focus, textarea:focus, button:focus {
-  outline: none;
-}
+
