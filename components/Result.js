@@ -8,7 +8,13 @@ class Result extends React.Component {
       listStyle: 'none',
       display: 'block',
       width: '320px',
-      height: '240px',
+      height: '210px',
+      backgroundPosition: '50% 0%',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      WebkitFilter: 'blur(5px)',
+      MozFilter: 'blur(5px)',
+      msFilter: 'blur(5px)',
       filter: 'blur(5px)'
     };
 
