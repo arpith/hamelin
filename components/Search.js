@@ -15,8 +15,8 @@ class Search extends React.Component {
   }
 
   render() {
-    const inputStyle = {
     const buttonStyle = {
+      font: 'inherit',
       background: '#157DEC',
       WebkitAppearance: 'none',
       borderRadius: '5',

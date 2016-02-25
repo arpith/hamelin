@@ -10,6 +10,10 @@
   body { font-size:21px; }
   h1 { font-size: 28px; }
 }
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url(/fonts/BebasNeue.otf);
+}
 p, div, h1 {
   max-width: 100%;
   overflow-x: auto;
