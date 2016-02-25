@@ -15,12 +15,16 @@ class Search extends React.Component {
   }
 
   render() {
+    const inputStyle = {
     const buttonStyle = {
       background: '#157DEC',
+      WebkitAppearance: 'none',
+      borderRadius: '5',
       color: 'white'
     };
     const fieldStyle = {
       font: 'inherit',
+      paddingLeft: '5',
       WebkitAppearance: 'none',
       border: 'thin solid',
       borderColor: '#4A525A',
