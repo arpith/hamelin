@@ -19,7 +19,7 @@ class Result extends React.Component {
     };
 
     return (
-      <li style={style}><Link to={'/' + this.props.result.id}>{this.props.result.title}</Link></li>
+      <li style={itemStyle}><Link to={'/' + this.props.result.id} style={linkStyle}>{this.props.result.title}</Link></li>
     );
   }
 }
