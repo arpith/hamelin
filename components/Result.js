@@ -10,6 +10,8 @@ class Result extends React.Component {
 
     const imgStyle = {
       position: 'absolute',
+      top: 0,
+      left: 0,
       zIndex: -1000,
       width: '320px',
       WebkitFilter: 'blur(1px)',
@@ -25,7 +27,9 @@ class Result extends React.Component {
       textTransform: 'uppercase',
       position: 'relative',
       height: '210px',
-      width: '320px'
+      width: '320px',
+      border: 'thick solid black',
+      margin: '20px',
     };
 
     return (
