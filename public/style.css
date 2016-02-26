@@ -11,8 +11,8 @@
   h1 { font-size: 28px; }
 }
 @font-face {
-  font-family: 'Bebas Neue';
-  src: url(/fonts/BebasNeue.otf);
+  font-family: 'Bebas Neue Bold';
+  src: url(/fonts/BebasNeue%20Bold.otf);
 }
 p, div, h1 {
   max-width: 100%;
