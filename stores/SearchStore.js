@@ -15,7 +15,7 @@ function parseResult(result) {
   return {
     id: result.id.videoId,
     title: result.snippet.title,
-    thumbnail: result.snippet.thumbnails.high.url,
+    thumbnail: result.snippet.thumbnails.medium.url,
     score: 1
   };
 }
