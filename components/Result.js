@@ -8,7 +8,7 @@ class Result extends React.Component {
     const style = {
       fontFamily: 'Bebas Neue Bold',
       fontSize: '2em',
-      lineHeight: '2.2em',
+      lineHeight: 'inherit',
       display: 'block',
       textDecoration: 'none',
       color: 'white',
