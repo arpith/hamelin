@@ -27,10 +27,10 @@ class Result extends React.Component {
       color: 'white',
       textTransform: 'uppercase',
       position: 'relative',
-      height: 210px,
-      width: 320px,
+      height: 210,
+      width: 320,
       border: 'thick solid black',
-      margin: '20px',
+      margin: 20
     };
 
     return (
