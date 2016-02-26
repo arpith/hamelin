@@ -4,18 +4,19 @@ import { Link } from 'react-router';
 class Result extends React.Component {
   render() {
     const itemStyle = {
-      backgroundImage: 'url(' + this.props.result.thumbnail + ')',
       listStyle: 'none',
       display: 'block',
+    };
+
+    const imgStyle = {
+      position: 'fixed',
+      top: 0,
+      zIndex: -1000,
       width: '320px',
-      height: '210px',
-      backgroundPosition: '50% 0%',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      WebkitFilter: 'blur(5px)',
-      MozFilter: 'blur(5px)',
-      msFilter: 'blur(5px)',
-      filter: 'blur(5px)'
+      WebkitFilter: 'blur(3px)',
+      MozFilter: 'blur(3px)',
+      msFilter: 'blur(3px)',
+      filter: 'blur(3px)'
     };
 
     const linkStyle = {
@@ -25,7 +26,12 @@ class Result extends React.Component {
     };
 
     return (
-      <li style={itemStyle}><Link to={'/' + this.props.result.id} style={linkStyle}>{this.props.result.title}</Link></li>
+      <li style={itemStyle}>
+        <Link to={'/' + this.props.result.id} style={linkStyle}>
+          {this.props.result.title}
+          <img src={this.props.result.thumbnail} style={imgStyle}>
+        </Link>
+      </li>
     );
   }
 }
