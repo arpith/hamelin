@@ -14,7 +14,7 @@ class Result extends React.Component {
       color: 'white',
       textTransform: 'uppercase',
       position: 'relative',
-      height: 210,
+      height: 180,
       width: 320,
       border: 'thick solid black',
       margin: 20

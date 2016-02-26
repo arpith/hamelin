@@ -8,7 +8,7 @@ class Thumbnail extends React.Component {
       left: 0,
       zIndex: -1000,
       width: 320,
-      height: 210,
+      height: 180,
       backgroundImage: 'url(' + this.props.url + ')',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
