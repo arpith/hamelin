@@ -10,20 +10,21 @@ class Result extends React.Component {
 
     const imgStyle = {
       position: 'absolute',
-      top: 0,
       zIndex: -1000,
-      width: '320px',
-      WebkitFilter: 'blur(3px)',
-      MozFilter: 'blur(3px)',
-      msFilter: 'blur(3px)',
-      filter: 'blur(3px)'
+      width: 320,
+      WebkitFilter: 'blur(2px)',
+      MozFilter: 'blur(2px)',
+      msFilter: 'blur(2px)',
+      filter: 'blur(2px)'
     };
 
     const linkStyle = {
       textDecoration: 'none',
       color: 'white',
       textTransform: 'uppercase',
-      position: 'relative'
+      position: 'relative',
+      height: 210,
+      width: 320
     };
 
     return (
