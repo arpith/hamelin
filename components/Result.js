@@ -16,8 +16,8 @@ class Result extends React.Component {
       position: 'relative',
       height: 180,
       width: 320,
-      border: 'thick solid black',
-      margin: 20
+      margin: 20,
+      float: 'left'
     };
 
     return (
