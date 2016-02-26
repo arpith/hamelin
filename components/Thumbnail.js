@@ -20,7 +20,7 @@ class Thumbnail extends React.Component {
     };
 
     return (
-      <div style={thumbnailStyle} />
+      <div style={style} />
     );
   }
 }
