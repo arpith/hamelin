@@ -26,11 +26,9 @@ class ResultList extends React.Component {
 
   render() {
     return (
-      <ol>
-        {this.state.results.map((result) => {
-          return <Result key={result.id} result={result} />;
-        })}
-      </ol>
+      {this.state.results.map((result) => {
+        return <Result key={result.id} result={result} />;
+      })}
     );
   }
 }

@@ -3,11 +3,6 @@ import { Link } from 'react-router';
 
 class Result extends React.Component {
   render() {
-    const itemStyle = {
-      listStyle: 'none',
-      display: 'block'
-    };
-
     const thumbnailStyle = {
       position: 'absolute',
       top: 0,
@@ -39,12 +34,10 @@ class Result extends React.Component {
     };
 
     return (
-      <li style={itemStyle}>
-        <Link to={'/' + this.props.result.id} style={linkStyle}>
-          {this.props.result.title}
-          <div style={thumbnailStyle} />
-        </Link>
-      </li>
+      <Link to={'/' + this.props.result.id} style={linkStyle}>
+        {this.props.result.title}
+        <div style={thumbnailStyle} />
+      </Link>
     );
   }
 }
