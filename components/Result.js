@@ -1,25 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import Thumbnail from './Thumbnail';
+
 class Result extends React.Component {
   render() {
-    const thumbnailStyle = {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      zIndex: -1000,
-      width: 320,
-      height: 210,
-      backgroundImage: 'url(' + this.props.result.thumbnail + ')',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      WebkitFilter: 'blur(1px)',
-      MozFilter: 'blur(1px)',
-      msFilter: 'blur(1px)',
-      filter: 'blur(1px)'
-    };
-
-    const linkStyle = {
+    const style = {
       fontFamily: 'Bebas Neue Bold',
       fontSize: '3em',
       display: 'block',
@@ -34,9 +20,9 @@ class Result extends React.Component {
     };
 
     return (
-      <Link to={'/' + this.props.result.id} style={linkStyle}>
+      <Link to={'/' + this.props.result.id} style={style}>
         {this.props.result.title}
-        <div style={thumbnailStyle} />
+        <Thumbnail url={this.props.result.thumbnail} />
       </Link>
     );
   }
