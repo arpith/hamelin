@@ -7,7 +7,8 @@ class Result extends React.Component {
   render() {
     const style = {
       fontFamily: 'Bebas Neue Bold',
-      fontSize: '3em',
+      fontSize: '2em',
+      lineHeight: '2.2em',
       display: 'block',
       textDecoration: 'none',
       color: 'white',
