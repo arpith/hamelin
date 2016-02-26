@@ -15,6 +15,7 @@ class Result extends React.Component {
       zIndex: -1000,
       width: '320px',
       backgroundImage: 'url(' + this.props.result.thumbnail + ')',
+      backgroundPosition: '50% 0%',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       WebkitFilter: 'blur(1px)',
