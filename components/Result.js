@@ -9,7 +9,7 @@ class Result extends React.Component {
     };
 
     const imgStyle = {
-      position: 'fixed',
+      position: 'absolute',
       top: 0,
       zIndex: -1000,
       width: '320px',
@@ -23,6 +23,7 @@ class Result extends React.Component {
       textDecoration: 'none',
       color: 'white',
       textTransform: 'uppercase',
+      position: 'relative'
     };
 
     return (
