@@ -5,7 +5,7 @@ class Result extends React.Component {
   render() {
     const itemStyle = {
       listStyle: 'none',
-      display: 'block',
+      display: 'block'
     };
 
     const imgStyle = {
@@ -29,7 +29,7 @@ class Result extends React.Component {
       <li style={itemStyle}>
         <Link to={'/' + this.props.result.id} style={linkStyle}>
           {this.props.result.title}
-          <img src={this.props.result.thumbnail} style={imgStyle}>
+          <img src={this.props.result.thumbnail} style={imgStyle} />
         </Link>
       </li>
     );
