@@ -21,6 +21,7 @@ class Result extends React.Component {
 
     const linkStyle = {
       fontFamily: 'Bebas Neue Bold',
+      fontSize: '3em',
       display: 'block',
       textDecoration: 'none',
       color: 'white',
