@@ -3,6 +3,7 @@ import React from 'react';
 class Title extends React.Component {
   render() {
     const style = {
+      padding: 10,
       fontFamily: 'Bebas Neue Bold',
       fontSize: '2em',
       lineHeight: 'inherit',
