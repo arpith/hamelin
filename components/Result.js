@@ -8,12 +8,15 @@ class Result extends React.Component {
       display: 'block'
     };
 
-    const imgStyle = {
+    const thumbnailStyle = {
       position: 'absolute',
       top: 0,
       left: 0,
       zIndex: -1000,
       width: '320px',
+      backgroundImage: 'url(' + this.props.result.thumbnail + ')',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
       WebkitFilter: 'blur(1px)',
       MozFilter: 'blur(1px)',
       msFilter: 'blur(1px)',
@@ -37,7 +40,7 @@ class Result extends React.Component {
       <li style={itemStyle}>
         <Link to={'/' + this.props.result.id} style={linkStyle}>
           {this.props.result.title}
-          <img src={this.props.result.thumbnail} style={imgStyle} />
+          <div style={thumbnailStyle} />
         </Link>
       </li>
     );
