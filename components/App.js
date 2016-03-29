@@ -8,7 +8,7 @@ class App extends React.Component {
   render() {
     const style = {
       padding: 10,
-      fontFamily: 'Futura',
+      fontFamily: 'Bebas Neue Bold',
       fontSize: '2em',
       lineHeight: 'inherit',
       color: 'black',
