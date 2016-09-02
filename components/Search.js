@@ -15,18 +15,11 @@ class Search extends React.Component {
   }
 
   searchVideos(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     SearchActions.searchVideos(this.state.query);
   }
 
   render() {
-    const buttonStyle = {
-      font: 'inherit',
-      background: '#157DEC',
-      WebkitAppearance: 'none',
-      borderRadius: '5',
-      color: 'white'
-    };
     const fieldStyle = {
       font: 'inherit',
       paddingLeft: '5',
@@ -42,8 +35,8 @@ class Search extends React.Component {
           value={this.state.query}
           onChange={this.updateState}
           style={fieldStyle}
-        />
-        <input type="submit" value="Search" style={buttonStyle} />
+          />
+        <Button value="Search" />
       </form>
     );
   }
