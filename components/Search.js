@@ -8,10 +8,15 @@ class Search extends React.Component {
     this.state = {
       query: 'Official Video'
     };
-    this.searchVideos = () => SearchActions.searchVideos(this.state.query);
+    this.searchVideos = this.searchVideos.bind(this);
     this.searchPlaylists = () => SearchActions.searchPlaylists(this.state.query);
     this.updateState = (e) => this.setState({query: e.target.value});
     this.searchVideos();
+  }
+
+  searchVideos(e) {
+    e.preventDefault();
+    SearchActions.searchVideos(this.state.query);
   }
 
   render() {
