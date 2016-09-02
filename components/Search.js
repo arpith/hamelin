@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 import SearchStore from '../stores/SearchStore';
 import SearchActions from '../actions/SearchActions';
  
